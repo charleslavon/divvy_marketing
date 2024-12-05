@@ -13,10 +13,21 @@ const Home: NextPageWithLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   function handleEmailDrop() {
-    console.log('User submitted ', email);
-    if (email === '') return;
-    //todo send email somewhere and update the form.
     emailSaved(true);
+    fetch('/api/earlyAccess', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
   useEffect(() => {
@@ -142,20 +153,19 @@ const Home: NextPageWithLayout = () => {
                   handleEmailDrop();
                 }}
               >
-                <Input name="email" onChange={(e) => setEmail(e.target.value)} type="email" />
+                <Input name="email" onChange={(e) => setEmail(e.target.value)} type="email" required />
                 <Text size="text-s" style={{ marginLeft: '0.5rem', marginTop: '0.5rem' }}>
                   By sharing your email, you agree to receive product updates and other marketing emails from us. You
                   may unsubscribe at any time.
                 </Text>
                 <Button
-                  type="button"
+                  type="submit"
                   variant="affirmative"
                   label="Get on the list"
                   style={{
                     marginLeft: 'auto',
                   }}
                   disabled={emailSubmitted}
-                  onClick={handleEmailDrop}
                 />
                 {emailSubmitted && <Text className={s.fade}>Thanks, we&apos;ll be in touch.</Text>}
               </form>
