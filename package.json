@@ -18,6 +18,11 @@
     "node": ">=20",
     "pnpm": "9.1.1"
   },
+    "pnpm": {
+    "overrides": {
+      "@near-wallet-selector/core": "8.9.12"
+    }
+  },
   "packageManager": "pnpm@9.1.1",
   "devDependencies": {
     "husky": "^9.0.11"

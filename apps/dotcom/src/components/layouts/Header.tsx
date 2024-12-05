@@ -1,5 +1,5 @@
 import { Container, SvgIcon } from '@near-pagoda/ui';
-import { GithubLogo, QrCode, TelegramLogo, TwitterLogo } from '@phosphor-icons/react';
+import { GithubLogo, TelegramLogo, Tree, TwitterLogo } from '@phosphor-icons/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -17,8 +17,8 @@ export const Header = () => {
       <div className={isDisabled}>
         <Container className={s.container}>
           <Link href={'/'} className={s.logo}>
-            <SvgIcon icon={<QrCode weight="duotone" />} size="m" />
-            CJ Stealth Apps
+            <SvgIcon icon={<Tree weight="duotone" />} size="m" />
+            Divvy Wealth
           </Link>
 
           {account && (
@@ -26,7 +26,6 @@ export const Header = () => {
               <Link href="https://github.com/charleslavon/pagoda-experiments" className={s.link} target="_blank">
                 <GithubLogo size={24} color="#a1a19e" />
               </Link>
-
               <Link href="https://twitter.com/openwebseries" className={s.link}>
                 <TwitterLogo size={24} color="#a1a19e" />
               </Link>

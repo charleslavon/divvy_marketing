@@ -1,6 +1,6 @@
-import { Button, Card, Flex, Grid, HR, Input, Section, SvgIcon, Text } from '@near-pagoda/ui';
-import { CalendarDots, HandPeace, Ticket } from '@phosphor-icons/react';
-import { useState } from 'react';
+import { Button, Card, Flex, Grid, Input, Section, SvgIcon, Text } from '@near-pagoda/ui';
+import { CreditCard, HandCoins, MathOperations, PiggyBank } from '@phosphor-icons/react';
+import { useEffect, useState } from 'react';
 
 import { useDefaultLayout } from '@/hooks/useLayout';
 import { NextPageWithLayout } from '@/utils/types';
@@ -10,6 +10,7 @@ import s from './Index.module.scss';
 const Home: NextPageWithLayout = () => {
   const [email, setEmail] = useState('');
   const [emailSubmitted, emailSaved] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   function handleEmailDrop() {
     console.log('User submitted ', email);
@@ -17,67 +18,86 @@ const Home: NextPageWithLayout = () => {
     //todo send email somewhere and update the form.
     emailSaved(true);
   }
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 860);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '55%',
+          zIndex: -1,
+          marginBottom: '10px',
+        }}
+      >
+        <video autoPlay muted loop id="myVideo" style={{ width: '100%', height: '100%', objectFit: 'cover' }}>
+          <source src="mesh.mp4" type="video/mp4" />
+        </video>
+      </div>
       <Section
         grow="available"
         style={{
           position: 'relative',
-          background: 'linear-gradient(to right, var(--violet9), var(--cyan10))',
           border: 'none',
           overflow: 'hidden',
         }}
       >
-        <img
-          src="/images/hero-background.jpg"
-          alt=""
-          style={{
-            position: 'absolute',
-            zIndex: 0,
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            opacity: 0.1,
-            filter: 'saturate(0%) blur(2px)',
-          }}
-        />
-
         <Flex stack gap="xl" gapTablet="l" style={{ zIndex: 5, margin: 'auto' }}>
           <Flex stack gap="s" style={{ textAlign: 'center' }}>
             <Text as="h1" color="white">
-              Our elevator pitch title
+              Grow together, share wealth.
             </Text>
-            <Text size="text-2xl" weight={400} color="violet12">
-              ...detailed subtitle/hook
+            <Text size="text-l" weight={400} color="violet12">
+              Invest in digital assets to provide a brighter future for you and your loved ones.
             </Text>
           </Flex>
 
-          <Grid columns="1fr 1fr 1fr" columnsTablet="1fr 1fr" columnsPhone="1fr" gap="l" gapPhone="m">
+          <Grid columns="1fr 1fr" columnsTablet="1fr 1fr" columnsPhone="1fr 1fr" gap="l" gapPhone="m">
             <Card>
               <Flex style={{ margin: 'auto 0' }} align="center">
-                <SvgIcon icon={<CalendarDots />} color="violet8" size="m" />
+                <SvgIcon icon={<PiggyBank />} color="violet8" size="m" />
                 <Text color="violet12" size="text-s">
-                  Just as we need third spaces irl —public areas that foster creativity, interactions, and diverse
-                  opinions
+                  Stash funds with family and friends to learn & grow your digital asset journey together.
                 </Text>
               </Flex>
             </Card>
 
             <Card>
               <Flex style={{ margin: 'auto 0' }} align="center">
-                <SvgIcon icon={<Ticket />} color="violet8" size="m" />
+                <SvgIcon icon={<MathOperations />} color="violet8" size="m" />
                 <Text color="violet12" size="text-s">
-                  we also need essential tools and technologies to be easily understandable, with relevant use-cases
+                  Choose an investment strategy that matches your comfortable risk level.
                 </Text>
               </Flex>
             </Card>
 
             <Card>
               <Flex style={{ margin: 'auto 0' }} align="center">
-                <SvgIcon icon={<HandPeace />} color="violet8" size="m" />
+                <SvgIcon icon={<HandCoins />} color="violet8" size="m" />
                 <Text color="violet12" size="text-s">
-                  for the equitable benefit of society, to accelerate creativity, and drive new economies.
+                  Share a percentage of the potential growth in your assets with your loved ones.
+                </Text>
+              </Flex>
+            </Card>
+
+            <Card>
+              <Flex style={{ margin: 'auto 0' }} align="center">
+                <SvgIcon icon={<CreditCard />} color="violet8" size="m" />
+                <Text color="violet12" size="text-s">
+                  Use your assets as collateral to easily cash-out with the Divvy Wealth VISA card.
                 </Text>
               </Flex>
             </Card>
@@ -88,31 +108,57 @@ const Home: NextPageWithLayout = () => {
       <Section>
         <Grid columns="1fr 1fr" gap="xl" columnsTablet="1fr">
           <Flex stack align="start">
-            <Text as="h2">Our Values</Text>
-
-            <Text>
-              We build apps that exemplify how investments in public good technologies facilitate economic mobility.
-            </Text>
-
-            <Text>More Detail...</Text>
+            <Text as="h2">The Litepaper</Text>
+            <div
+              style={{
+                border: '1px solid lightgrey',
+                borderRadius: '8px',
+                padding: '1rem',
+                backgroundColor: '#f0efec',
+              }}
+            >
+              {isMobile ? (
+                <div style={{ textAlign: 'center' }}>
+                  <Text>Please download the PDF for the best viewing experience</Text>
+                  <Button
+                    type="button"
+                    variant="affirmative"
+                    label="Download"
+                    onClick={() => window.open('litepaper.pdf', '_blank')}
+                  />
+                </div>
+              ) : (
+                <embed src="litepaper.pdf" width="580px" height="625px" />
+              )}
+            </div>
           </Flex>
           <Flex stack align="start">
             <Text as="h2">Get Early Access</Text>
-
-            <Text>Drop your email to get first access to our latest apps.</Text>
-
+            <Text>Drop your email to get updates & early access.</Text>
             <section className={s.subscribe}>
-              <Input name="email" onChange={(e) => setEmail(e.target.value)} />
-              <Button
-                type="button"
-                variant="affirmative"
-                label="Receive Updates"
-                style={{ marginLeft: 'auto' }}
-                disabled={emailSubmitted}
-                onClick={handleEmailDrop}
-              />
-              {emailSubmitted && <Text className={s.fade}>Thanks, we&apos;ll be in touch.</Text>}
-              <HR />
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleEmailDrop();
+                }}
+              >
+                <Input name="email" onChange={(e) => setEmail(e.target.value)} type="email" />
+                <Text size="text-s" style={{ marginLeft: '0.5rem', marginTop: '0.5rem' }}>
+                  By sharing your email, you agree to receive product updates and other marketing emails from us. You
+                  may unsubscribe at any time.
+                </Text>
+                <Button
+                  type="button"
+                  variant="affirmative"
+                  label="Get on the list"
+                  style={{
+                    marginLeft: 'auto',
+                  }}
+                  disabled={emailSubmitted}
+                  onClick={handleEmailDrop}
+                />
+                {emailSubmitted && <Text className={s.fade}>Thanks, we&apos;ll be in touch.</Text>}
+              </form>
             </section>
           </Flex>
         </Grid>

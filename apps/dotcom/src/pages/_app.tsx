@@ -1,6 +1,6 @@
 import '@near-pagoda/ui/globals.css';
-import '@near-pagoda/ui/theme.css';
 import '@near-pagoda/ui/lib.css';
+import '@near-pagoda/ui/theme.css';
 import '@near-wallet-selector/modal-ui/styles.css';
 
 import { PagodaUiProvider, Toaster } from '@near-pagoda/ui';
@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           <Head>
             <link rel="icon" href="favicon.ico" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <title>Team CJ</title>
+            <title>Divvy</title>
           </Head>
 
           {getLayout(<Component {...pageProps} />)}

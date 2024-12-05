@@ -6,8 +6,8 @@
     "build": "next build",
     "ts": "tsc --m es6",
     "dev": "next dev",
-    "format": "prettier --config ../../.prettierrc.json --check --ignore-path ../../.gitignore .",
-    "format:fix": "prettier --config ../../.prettierrc.json --write --ignore-path ../../.gitignore .",
+    "format": "prettier --config ../../.prettierrc.json --check --ignore-path ../../.prettierignore .",
+    "format:fix": "prettier --config ../../.prettierrc.json --write --ignore-path ../../.prettierignore .",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "pre-commit": "pnpm format && pnpm lint --max-warnings 0 && pnpm ts:check",
@@ -29,6 +29,7 @@
     "@near-wallet-selector/my-near-wallet": "^8.9.7",
     "@near-wallet-selector/nightly": "^8.9.7",
     "@phosphor-icons/react": "^2.1.5",
+    "@radix-ui/colors": "^3.0.0",
     "@tanstack/react-query": "^5.48.0",
     "@walletpass/pass-js": "^6.9.1",
     "dayjs": "^1.11.13",
@@ -67,10 +68,5 @@
     "node": ">=20",
     "pnpm": "9.1.1"
   },
-  "packageManager": "pnpm@9.1.1",
-  "pnpm": {
-    "overrides": {
-      "@near-wallet-selector/core": "8.9.12"
-    }
-  }
+  "packageManager": "pnpm@9.1.1"
 }
