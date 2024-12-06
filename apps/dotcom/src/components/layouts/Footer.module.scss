@@ -1,5 +1,5 @@
 .footer {
-  background: var(--sand2);
+  background: var(--white);
   padding: var(--gap-m);
   box-shadow: 0 -1px 0 var(--blackA5);
 }
@@ -21,7 +21,7 @@
   margin-top: -18px;
   white-space: nowrap;
   text-decoration: none;
-  color: var(--sand10);
+  color: var(--sand-10);
   cursor: pointer;
   outline: none;
   transition: all var(--transition-speed);
@@ -32,7 +32,7 @@
 
   &:hover,
   &:focus-visible {
-    color: var(--sand12);
+    color: var(--sand-12);
   }
 }
 

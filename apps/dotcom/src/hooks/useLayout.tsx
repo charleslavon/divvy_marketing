@@ -1,11 +1,7 @@
 import type { ReactElement } from 'react';
 
-import { DefaultLayout } from '@/components/layouts/DefaultLayout';
+import RootLayout from '@/components/layouts/RootLayout';
 
 export function useDefaultLayout(page: ReactElement) {
-  return <DefaultLayout>{page}</DefaultLayout>;
-}
-
-export function useProducerLayout(page: ReactElement) {
-  return <DefaultLayout signInRequired>{page}</DefaultLayout>;
+  return <RootLayout>{page}</RootLayout>;
 }

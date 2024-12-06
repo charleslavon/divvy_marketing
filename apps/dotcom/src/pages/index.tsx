@@ -11,6 +11,7 @@ const Home: NextPageWithLayout = () => {
   const [email, setEmail] = useState('');
   const [emailSubmitted, emailSaved] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   function handleEmailDrop() {
     emailSaved(true);
@@ -32,7 +33,8 @@ const Home: NextPageWithLayout = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 860);
+      setIsMobile(window.innerWidth < 600);
+      setIsTablet(window.innerWidth < 1024);
     };
 
     window.addEventListener('resize', handleResize);
@@ -49,8 +51,7 @@ const Home: NextPageWithLayout = () => {
           top: 0,
           left: 0,
           width: '100%',
-          height: '55%',
-          zIndex: -1,
+          height: isMobile ? '550px' : isTablet ? '375px' : '450px',
           marginBottom: '10px',
         }}
       >
@@ -66,48 +67,54 @@ const Home: NextPageWithLayout = () => {
           overflow: 'hidden',
         }}
       >
-        <Flex stack gap="xl" gapTablet="l" style={{ zIndex: 5, margin: 'auto' }}>
-          <Flex stack gap="s" style={{ textAlign: 'center' }}>
-            <Text as="h1" color="white">
+        <Flex
+          direction="column"
+          gap="xl"
+          style={{ zIndex: 5, margin: 'auto' }}
+          tablet={{ gap: 'l' }}
+          phone={{ gap: 'm' }}
+        >
+          <Flex direction="column" gap="s" style={{ textAlign: 'center' }}>
+            <Text as="h1" color="white-a12">
               Grow together, share wealth.
             </Text>
-            <Text size="text-l" weight={400} color="violet12">
+            <Text size="text-l" weight={400} color="white-a12">
               Invest in digital assets to provide a brighter future for you and your loved ones.
             </Text>
           </Flex>
 
-          <Grid columns="1fr 1fr" columnsTablet="1fr 1fr" columnsPhone="1fr 1fr" gap="l" gapPhone="m">
+          <Grid columns="1fr 1fr" gap="l" phone={{ columns: '1fr' }}>
             <Card>
-              <Flex style={{ margin: 'auto 0' }} align="center">
-                <SvgIcon icon={<PiggyBank />} color="violet8" size="m" />
-                <Text color="violet12" size="text-s">
+              <Flex align="center" gap="m">
+                <SvgIcon icon={<PiggyBank />} color="violet-8" size="m" />
+                <Text color="violet-12" size="text-s">
                   Stash funds with family and friends to learn & grow your digital asset journey together.
                 </Text>
               </Flex>
             </Card>
 
             <Card>
-              <Flex style={{ margin: 'auto 0' }} align="center">
-                <SvgIcon icon={<MathOperations />} color="violet8" size="m" />
-                <Text color="violet12" size="text-s">
+              <Flex align="center" gap="m">
+                <SvgIcon icon={<MathOperations />} color="violet-8" size="m" />
+                <Text color="violet-12" size="text-s">
                   Choose an investment strategy that matches your comfortable risk level.
                 </Text>
               </Flex>
             </Card>
 
             <Card>
-              <Flex style={{ margin: 'auto 0' }} align="center">
-                <SvgIcon icon={<HandCoins />} color="violet8" size="m" />
-                <Text color="violet12" size="text-s">
+              <Flex align="center" gap="m">
+                <SvgIcon icon={<HandCoins />} color="violet-8" size="m" />
+                <Text color="violet-12" size="text-s">
                   Share a percentage of the potential growth in your assets with your loved ones.
                 </Text>
               </Flex>
             </Card>
 
             <Card>
-              <Flex style={{ margin: 'auto 0' }} align="center">
-                <SvgIcon icon={<CreditCard />} color="violet8" size="m" />
-                <Text color="violet12" size="text-s">
+              <Flex align="center" gap="m">
+                <SvgIcon icon={<CreditCard />} color="violet-8" size="m" />
+                <Text color="violet-12" size="text-s">
                   Use your assets as collateral to easily cash-out with the Divvy Wealth VISA card.
                 </Text>
               </Flex>
@@ -116,9 +123,16 @@ const Home: NextPageWithLayout = () => {
         </Flex>
       </Section>
 
-      <Section>
-        <Grid columns="1fr 1fr" gap="xl" columnsTablet="1fr">
-          <Flex stack align="start">
+      <Section
+        style={{
+          position: 'relative',
+          border: 'none',
+          overflow: 'hidden',
+          zIndex: 10,
+        }}
+      >
+        <Grid columns="1fr 1fr" gap="xl" phone={{ columns: '1fr' }} tablet={{ columns: '1fr' }}>
+          <Flex direction="column" align="center" style={{ marginTop: '10px' }}>
             <Text as="h2">The Litepaper</Text>
             <div
               style={{
@@ -143,7 +157,12 @@ const Home: NextPageWithLayout = () => {
               )}
             </div>
           </Flex>
-          <Flex stack align="start">
+          <Flex
+            direction="column"
+            align={isMobile || isTablet ? 'center' : 'start'}
+            gap="s"
+            style={{ marginTop: '10px', width: '90%' }}
+          >
             <Text as="h2">Get Early Access</Text>
             <Text>Drop your email to get updates & early access.</Text>
             <section className={s.subscribe}>
@@ -158,15 +177,7 @@ const Home: NextPageWithLayout = () => {
                   By sharing your email, you agree to receive product updates and other marketing emails from us. You
                   may unsubscribe at any time.
                 </Text>
-                <Button
-                  type="submit"
-                  variant="affirmative"
-                  label="Get on the list"
-                  style={{
-                    marginLeft: 'auto',
-                  }}
-                  disabled={emailSubmitted}
-                />
+                <Button type="submit" variant="affirmative" label="Get on the list" disabled={emailSubmitted} />
                 {emailSubmitted && <Text className={s.fade}>Thanks, we&apos;ll be in touch.</Text>}
               </form>
             </section>
