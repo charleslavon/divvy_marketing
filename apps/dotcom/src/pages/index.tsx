@@ -34,7 +34,7 @@ const Home: NextPageWithLayout = () => {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 600);
-      setIsTablet(window.innerWidth < 1024);
+      setIsTablet(window.innerWidth < 1100);
     };
 
     window.addEventListener('resize', handleResize);
@@ -51,7 +51,7 @@ const Home: NextPageWithLayout = () => {
           top: 0,
           left: 0,
           width: '100%',
-          height: isMobile ? '550px' : isTablet ? '375px' : '450px',
+          height: isMobile ? '560px' : isTablet ? '375px' : '450px',
           marginBottom: '10px',
         }}
       >
@@ -131,20 +131,21 @@ const Home: NextPageWithLayout = () => {
           zIndex: 10,
         }}
       >
-        <Grid columns="1fr 1fr" gap="xl" phone={{ columns: '1fr' }} tablet={{ columns: '1fr' }}>
-          <Flex direction="column" align="center" style={{ marginTop: '10px' }}>
+        <Grid columns="1fr 1fr" gap="2xl" phone={{ columns: '1fr' }} tablet={{ columns: '1fr' }}>
+          <Flex direction="column" align="center" style={{ marginTop: '15px' }}>
             <Text as="h2">The Litepaper</Text>
             <div
               style={{
                 border: '1px solid lightgrey',
                 borderRadius: '8px',
                 padding: '1rem',
+                marginTop: '10px',
                 backgroundColor: '#f0efec',
               }}
             >
               {isMobile ? (
                 <div style={{ textAlign: 'center' }}>
-                  <Text>Please download the PDF for the best viewing experience</Text>
+                  <Text style={{ padding: '10px' }}>Please download the PDF for the best viewing experience</Text>
                   <Button
                     type="button"
                     variant="affirmative"
@@ -161,7 +162,7 @@ const Home: NextPageWithLayout = () => {
             direction="column"
             align={isMobile || isTablet ? 'center' : 'start'}
             gap="s"
-            style={{ marginTop: '10px', width: '90%' }}
+            style={{ marginTop: '15px' }}
           >
             <Text as="h2">Get Early Access</Text>
             <Text>Drop your email to get updates & early access.</Text>
@@ -177,8 +178,10 @@ const Home: NextPageWithLayout = () => {
                   By sharing your email, you agree to receive product updates and other marketing emails from us. You
                   may unsubscribe at any time.
                 </Text>
-                <Button type="submit" variant="affirmative" label="Get on the list" disabled={emailSubmitted} />
-                {emailSubmitted && <Text className={s.fade}>Thanks, we&apos;ll be in touch.</Text>}
+                <div style={{ alignItems: 'safe center', display: 'grid' }}>
+                  <Button type="submit" variant="affirmative" label="Get on the list" disabled={emailSubmitted} />
+                  {emailSubmitted && <Text className={s.fade}>Thanks, we&apos;ll be in touch.</Text>}
+                </div>
               </form>
             </section>
           </Flex>
