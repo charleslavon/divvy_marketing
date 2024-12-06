@@ -1,4 +1,4 @@
-import { Container, Text } from '@near-pagoda/ui';
+import { Flex, Grid, Text } from '@near-pagoda/ui';
 
 import NearLogoSvg from '@/svg/near-logo.svg';
 
@@ -10,31 +10,25 @@ import s from './Footer.module.scss';
 export const Footer = () => {
   return (
     <footer className={s.footer}>
-      <Container className={s.container}>
-        <div className={s.links}>
+      <Flex gap="s">
+        <Grid columns="1fr 1fr 1fr 1fr" gap="3xl">
           <a className={s.logo} href="/terms">
-            <Text size="text-xs" color="current">
-              Terms
-            </Text>
+            <Text size="text-xs">Terms of Use</Text>
           </a>
           <a className={s.logo} href="/privacy">
-            <Text size="text-xs" color="current">
-              Privacy
-            </Text>
+            <Text size="text-xs">Privacy Policy</Text>
           </a>
-          <div className={s.copyright}>
-            <Text size="text-xs">© 2024 Divvy Wealth</Text>
+          <div className={s.near}>
+            <a className={s.logo} href="https://near.org" target="_blank">
+              <Text size="text-xs" style={{ paddingRight: '5px', display: 'inline' }}>
+                Powered by
+              </Text>
+              <NearLogoSvg style={{ display: 'inline', verticalAlign: 'middle' }} />
+            </a>
           </div>
-        </div>
-        <div className={s.near}>
-          <a className={s.logo} href="https://near.org" target="_blank">
-            <Text size="text-xs" color="current">
-              Powered by
-            </Text>
-            <NearLogoSvg />
-          </a>
-        </div>
-      </Container>
+          <Text size="text-xs">© 2024 Divvy Wealth</Text>
+        </Grid>
+      </Flex>
     </footer>
   );
 };

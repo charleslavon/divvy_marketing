@@ -18,6 +18,14 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <link rel="icon" href="favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+        <meta
+          name="description"
+          content="Welcome to Divvy Wealth - Stash funds with family and friends to learn & grow your digital asset journey together."
+        />
+        <meta
+          name="keywords"
+          content="Divvy, finance, crypto, stablecoins, investing, decentralized finance, growth, allowances"
+        />
         <title>Divvy</title>
       </Head>
 

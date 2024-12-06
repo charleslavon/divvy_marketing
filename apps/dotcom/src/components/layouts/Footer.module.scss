@@ -16,9 +16,7 @@
 }
 
 .near {
-  display: block;
-  margin-left: 45%;
-  margin-top: -18px;
+  display: inline;
   white-space: nowrap;
   text-decoration: none;
   color: var(--sand-10);
@@ -39,11 +37,12 @@
 .copyright {
   color: #898987;
   margin-left: auto;
-  justify-content: flex-end;
+  position: relative;
+  float: right;
+  margin-top: -15px;
 }
 
 .logo {
-  display: flex;
   align-items: center;
   gap: var(--gap-s);
   white-space: nowrap;
