@@ -114,7 +114,7 @@
   }
 
   &.dark {
-    --sand-0: #0b0b0a;
+    --sand-0: #003344;
 
     --green-1: #0b130f;
     --green-2: #111b15;
@@ -128,6 +128,7 @@
     --green-10: #00e18d;
     --green-11: #00db87;
     --green-12: #a8f4c8;
+    --button-color-border: 'white';
 
     --violet-1: #0f101c;
     --violet-2: #151526;
@@ -141,5 +142,9 @@
     --violet-10: #8c8cf2;
     --violet-11: #a8aaff;
     --violet-12: #dddfff;
+
+    button {
+      border-color: var(--white);
+    }
   }
 }

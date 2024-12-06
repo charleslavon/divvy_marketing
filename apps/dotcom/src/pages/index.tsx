@@ -153,11 +153,14 @@ const Home: NextPageWithLayout = () => {
             >
               {isMobile ? (
                 <div style={{ textAlign: 'center' }}>
-                  <Text style={{ padding: '10px' }}>Please download the PDF for the best viewing experience</Text>
+                  <Text style={{ padding: '10px', color: '#03353d' }}>
+                    Please download the PDF for the best viewing experience
+                  </Text>
                   <Button
                     type="button"
                     variant="affirmative"
                     label="Download"
+                    style={{ color: 'white' }}
                     onClick={() => window.open('litepaper.pdf', '_blank')}
                   />
                 </div>
@@ -187,7 +190,13 @@ const Home: NextPageWithLayout = () => {
                   may unsubscribe at any time.
                 </Text>
                 <div style={{ alignItems: 'safe center', display: 'grid' }}>
-                  <Button type="submit" variant="affirmative" label="Get on the list" disabled={emailSubmitted} />
+                  <Button
+                    type="submit"
+                    variant="affirmative"
+                    label="Get on the list"
+                    disabled={emailSubmitted}
+                    style={{ color: 'white' }}
+                  />
                   {emailSubmitted && <Text className={s.fade}>Thanks, we&apos;ll be in touch.</Text>}
                 </div>
               </form>
