@@ -11,7 +11,7 @@ export const Footer = () => {
   return (
     <footer className={s.footer}>
       <Flex gap="s">
-        <Grid columns="1fr 1fr 1fr 1fr" gap="3xl">
+        <Grid columns="1fr 1fr 1fr 1fr" gap="3xl" phone={{ columns: '1fr 1fr 1fr', gap: 'm' }}>
           <a className={s.logo} href="/terms">
             <Text size="text-xs">Terms of Use</Text>
           </a>
