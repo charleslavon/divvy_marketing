@@ -55,7 +55,15 @@ const Home: NextPageWithLayout = () => {
           marginBottom: '10px',
         }}
       >
-        <video autoPlay muted loop id="myVideo" style={{ width: '100%', height: '100%', objectFit: 'cover' }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          disablePictureInPicture
+          id="bgvuideo"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        >
           <source src="mesh.mp4" type="video/mp4" />
         </video>
       </div>
