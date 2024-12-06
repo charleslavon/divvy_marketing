@@ -51,7 +51,7 @@ const Home: NextPageWithLayout = () => {
           top: 0,
           left: 0,
           width: '100%',
-          height: isMobile ? '560px' : isTablet ? '375px' : '450px',
+          height: isMobile ? '585px' : isTablet ? '375px' : '450px',
           marginBottom: '10px',
         }}
       >

@@ -14,12 +14,12 @@ export const Footer = () => {
         <div className={s.links}>
           <a className={s.logo} href="/terms">
             <Text size="text-xs" color="current">
-              Terms of Use
+              Terms
             </Text>
           </a>
           <a className={s.logo} href="/privacy">
             <Text size="text-xs" color="current">
-              Privacy Policy
+              Privacy
             </Text>
           </a>
           <div className={s.copyright}>
