@@ -18,7 +18,7 @@ export const Header = () => {
             <Link href="https://github.com/beneviolabs/divvy-contracts" className={s.link} target="_blank">
               <GithubLogo size={24} color="#a1a19e" />
             </Link>
-            <Link href="https://twitter.com/openwebseries" className={s.link}>
+            <Link href="https://twitter.com/openwebeconomy" className={s.link}>
               <TwitterLogo size={24} color="#a1a19e" />
             </Link>
           </div>
