@@ -20,13 +20,15 @@ export const Footer = () => {
           </a>
           <div className={s.near}>
             <a className={s.logo} href="https://near.org" target="_blank">
-              <Text size="text-xs" style={{ paddingRight: '5px', display: 'inline' }}>
+              <Text size="text-xs" style={{ paddingRight: '5px' }}>
                 Powered by
               </Text>
-              <NearLogoSvg style={{ display: 'inline', verticalAlign: 'middle' }} />
+              <NearLogoSvg style={{ verticalAlign: 'middle' }} />
             </a>
           </div>
-          <Text size="text-xs">© 2024 Divvy Wealth</Text>
+          <Text size="text-xs" style={{ verticalAlign: 'bottom' }}>
+            © 2024 Divvy Wealth
+          </Text>
         </Grid>
       </Flex>
     </footer>
